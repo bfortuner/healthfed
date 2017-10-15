@@ -701,7 +701,8 @@ MutationRootType = GraphQLObjectType(
                 args.get('description'), 
                 args.get('tissue'), 
                 args.get("dataset"), 
-        ),
+            ),
+        )
     }
 )
 
