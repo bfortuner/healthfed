@@ -21,6 +21,7 @@ Annotation = namedtuple('Annotation', 'id label bbox polygon')
 BoundingBox = namedtuple('BoundingBox', 'id annoId label score xmin ymin xmax ymax points')
 Polygon = namedtuple('Polygon', 'id annoId label score points')
 ObjDetectImage = namedtuple('ObjDetectImage', 'id project src annotations labels') 
+ObjAllPost = namedtuple('ObjAllPost', 'name description tissue dataset')
 ObjDetectLabelOpts = namedtuple('ObjDetectLabelOpts', 'labels') 
 ColorLabel = namedtuple('ColorLabel', 'value text color') 
 
@@ -223,6 +224,8 @@ AnnotationInputType = GraphQLInputObjectType(
 )
 
 
+
+
 ObjDetectImageType = GraphQLObjectType(
     name='ObjDetectImage',
     fields= {
@@ -240,6 +243,24 @@ ObjDetectImageType = GraphQLObjectType(
         ),
         'labels': GraphQLField(
             GraphQLList(ColorLabelType)
+        ),
+    }
+)
+
+ObjAllPostType = GraphQLObjectType(
+    name='ObjAllPost',
+    fields= {
+        'name': GraphQLField(
+            GraphQLNonNull(GraphQLString),
+        ),
+        'description': GraphQLField(
+            GraphQLNonNull(GraphQLString),
+        ),
+        'tissue': GraphQLField(
+            GraphQLNonNull(GraphQLString),
+        ),
+        'dataset': GraphQLField(
+            GraphQLNonNull(GraphQLString),
         ),
     }
 )
@@ -555,6 +576,15 @@ def save_obj_detect_image(id_, project, annos, dset=None):
             if id_ in fold[dset]:
                 fold[dset][id_] = entry
                 break
+
+def save_model_post(name, description, tissue, dataset):
+    print(name)
+    print(description)
+    print(tissue)
+    print(dataset)
+
+    with open("new_model.txt", "w") as f:
+        f.write("Name: {}\nDescription: {}\nTissue: {}\nDataset:{}".format(name, description, tissue, dataset))
     ## NOT SAVING FOR DEMO !!!!!! ##
     # data.save_fold(fold)
     # data.update_counts(fold["name"])
@@ -647,16 +677,6 @@ QueryRootType = GraphQLObjectType(
 MutationRootType = GraphQLObjectType(
     name='Mutation',
     fields=lambda: {
-        'updateImageTags': GraphQLField(
-            ImageType,
-            args={
-                'id': GraphQLArgument(GraphQLString),
-                'project': GraphQLArgument(GraphQLString),
-                'tags': GraphQLArgument(GraphQLList(GraphQLString))
-            },
-            resolver=lambda root, args, *_: update_tags(
-                args.get('id'), args.get('project'), args.get('tags'))
-        ),
         'saveObjDetectImage': GraphQLField(
             ObjDetectImageType,
             args={
@@ -667,6 +687,20 @@ MutationRootType = GraphQLObjectType(
             },
             resolver=lambda root, args, *_: save_obj_detect_image(
                 args.get('id'), args.get('project'), args.get('annotations'))
+        ),
+        'allPost': GraphQLField(
+            ObjAllPostType,
+            args={
+                'name': GraphQLArgument(GraphQLString),
+                'description': GraphQLArgument(GraphQLString),
+                'tissue': GraphQLArgument(GraphQLString),
+                'dataset': GraphQLArgument(GraphQLString)
+            },
+            resolver=lambda root, args, *_: save_model_post(
+                args.get('name'), 
+                args.get('description'), 
+                args.get('tissue'), 
+                args.get("dataset"), 
         ),
     }
 )

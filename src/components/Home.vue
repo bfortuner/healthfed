@@ -9,7 +9,7 @@
       <section>
         <!-- <v-parallax src="http://pre11.deviantart.net/3e10/th/pre/f/2017/144/8/0/fight_by_nesskain-dbaa5v1.jpg" height="600"> -->
         <!-- <v-parallax src="https://s3-us-west-1.amazonaws.com/labelai-static/hero.jpeg" height="600"> -->
-        <v-parallax src="https://s3.amazonaws.com/aws-website-labelai-gffh8/Screen+Shot+2017-10-01+at+6.01.48+PM.png" height="600">
+        <v-parallax src="https://s3-us-west-1.amazonaws.com/labelai-static/health.jpg" height="600">
         
           <v-layout
             column
@@ -48,25 +48,10 @@
                       <v-icon x-large class="blue--text text--lighten-2">color_lens</v-icon>
                     </v-card-text>
                     <v-card-title primary-title class="layout justify-center">
-                      <div class="headline text-xs-center">Intuitive UI</div>
+                      <div class="headline text-xs-center">For Researchers</div>
                     </v-card-title>
                     <v-card-text>
-                      Extensive keyboard shortcuts and smart editing tools designed for speed
-                      provide unparalleled speed and control of your workflow.
-                    </v-card-text>
-                  </v-card>
-                </v-flex>
-                <v-flex xs12 md4>
-                  <v-card class="elevation-0 transparent">
-                    <v-card-text class="text-xs-center">
-                      <v-icon x-large class="blue--text text--lighten-2">flash_on</v-icon>
-                    </v-card-text>
-                    <v-card-title primary-title class="layout justify-center">
-                      <div class="headline">AI Acceleration</div>
-                    </v-card-title>
-                    <v-card-text>
-                      Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare. 
-                      Pellentesque habitant morbi tristique senectus.
+                      We provide analytics as a service based on specific data requests. Researchers get access to a bigger pool of data for increased model accuracy.
                     </v-card-text>
                   </v-card>
                 </v-flex>
@@ -76,10 +61,23 @@
                       <v-icon x-large class="blue--text text--lighten-2">build</v-icon>
                     </v-card-text>
                     <v-card-title primary-title class="layout justify-center">
-                      <div class="headline text-xs-center">Open Source</div>
+                      <div class="headline text-xs-center">For Hospitals</div>
                     </v-card-title>
                     <v-card-text>
-                      Download and run a basic version of our app for free locally on your machine!
+                      We clean the vast amounts of unstructured but highly valuable data, including EHR, clinical trial, genomics and PACS. 
+                    </v-card-text>
+                  </v-card>
+                </v-flex>
+                <v-flex xs12 md4>
+                  <v-card class="elevation-0 transparent">
+                    <v-card-text class="text-xs-center">
+                      <v-icon x-large class="blue--text text--lighten-2">flash_on</v-icon>
+                    </v-card-text>
+                    <v-card-title primary-title class="layout justify-center">
+                      <div class="headline">For Companies</div>
+                    </v-card-title>
+                    <v-card-text>
+                      Our model training platform offers businesss the ability to train their models on our large anonymous datasets.
                     </v-card-text>
                   </v-card>
                 </v-flex>
@@ -92,7 +90,7 @@
       <section>
         <v-parallax src="https://s3-us-west-1.amazonaws.com/labelai-static/section.jpeg" height="380">
           <v-layout column align-center justify-center>
-            <div class="headline white--text mb-3">Labeling training data has never been easier</div>
+            <div class="headline white--text mb-3">Train your Models on the biggest Healthcare dataset available</div>
             <em>Kick-start your machine learning project today</em>
             <v-btn
               class="blue lighten-2 mt-5"
