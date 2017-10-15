@@ -18,7 +18,7 @@
             class="white--text"
           >
             <h1 class="white--text mb-2 display-3">Healthcare Model Training</h1>
-            <div class="headline mb-3 text-xs-center">Label training data 10x faster with predictive clicking</div>
+            <div class="headline mb-3 text-xs-center">Train machine learning models on healthcare data</div>
             <v-btn
               class="blue lighten-2 mt-5"
               dark
@@ -172,7 +172,7 @@ export default {
   data () {
       return {
           drawer: true,
-          title: 'MTAS.ai'
+          title: 'Federated Health'
       }
   }
 }
