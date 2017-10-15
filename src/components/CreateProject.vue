@@ -8,18 +8,6 @@
       <v-spacer></v-spacer>
 
       <v-flex xs3 sm3>
-        <v-slider
-        label="Adjust:"
-        v-on="adjustThreshold()"
-        v-model="sliderValue"
-        :step="5" 
-        snap 
-        thumb-label
-        dark>
-        </v-slider>
-      </v-flex>
-
-      <v-flex xs3 sm3>
         <v-select id='select-label'
           prepend-icon="label"
           v-bind:items="datasets"
@@ -31,12 +19,37 @@
       </v-flex>
     <v-btn icon>
       <v-icon large>more_vert</v-icon>
-    </v-btn>    
+    </v-btn>
     </v-toolbar>
 
     <main>
       <v-container fluid>
         <!-- HTML BODY HERE -->
+        <v-flex xs3 sm3>
+        <v-form v-model="valid">
+          <v-text-field
+            label="Model Name"
+            v-model="name"
+            :rules="nameRules"
+            required
+          ></v-text-field>
+          <v-text-field
+            label="Description"
+            v-model="message"
+            required
+          ></v-text-field>
+          <v-slider
+          label="Adjust:"
+          v-on="adjustThreshold()"
+          v-model="sliderValue"
+          :step="5"
+          snap
+          thumb-label
+          dark>
+          </v-slider>
+        </v-form>
+        </v-flex>
+
       </v-container>
     </main>
 
@@ -44,7 +57,7 @@
       <span class="white--text">© 2017</span>
     </v-footer>
   </v-app>
-  
+
 </template>
 
 <script>
@@ -63,11 +76,11 @@ var print = function(text) {
 
 export default {
   name: 'createProject',
-  components: { 
+  components: {
     RangeSlider
   },
   props: [],
-  
+
   data() {
     return {
       id: '',
@@ -76,7 +89,7 @@ export default {
       sliderValue: 1.0
     }
   },
-  
+
   apollo: {
     // This fires automatically on page load
     nextObjDetectImage: {
@@ -92,7 +105,7 @@ export default {
       },
     },
   },
-  
+
   computed: {
       autocompleteLabels: function () {
         return false;
